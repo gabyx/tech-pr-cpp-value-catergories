@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!--- Start this presentation with
+        browser-sync start --server --files="./*.html" --index="Transformationen.html"
+    -->
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>reveal.js</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/cyfex.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  
+  <!-- <link rel="stylesheet" href="plugin/highlight/styles/zernburn.css"> -->
+  <!-- Gut für Presentation  -->
+  <link rel="stylesheet" href="plugin/highlight/styles/mono-blue-mod.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    
+    // If decktape export we need to load some other css
+    // Emoji-Convertion
+    if(window.location.search.match(/decktape/gi))
+    {
+      let link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href =  'css/print/decktape.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+  </script>
+
+  <!-- Some tweaks -->
+  <style type="text/css">
+    .reveal blockquote {
+      box-shadow: none;
+      width: 80%;
+    }
+
+    .reveal blockquote p {
+      margin: 0;
+      border: 2pt;
+      color: black;
+      border-color: black;
+      background-color: rgb(218, 216, 216);
+      border-radius: 4pt;
+      padding: 0.2ex 0.5ex;
+    }
+
+    .reveal blockquote div.source {
+      text-align: right;
+      font-style: normal;
+    }
+
+    .reveal .center-me {
+      display: flex;
+      justify-content: center;
+    }
+
+    .reveal .container-outer {
+      position: relative;
+      text-align: center;
+    }
+
+    .reveal .container-inner {
+      position: absolute;
+    }
+
+    .reveal .overlay {
+      position: absolute;
+    }
+
+    .reveal section img {
+      border: 4pt solid #aaaaaa;
+    }
+
+    .reveal bold {
+      font-weight: bold;
+    }
+
+    .reveal .emph {
+      color: rgb(0, 0, 184);
+    }
+
+    .reveal .no-border {
+      border: none;
+      box-shadow: none;
+    }
+
+    /* Für Presentation */
+    .reveal pre {
+      background: rgba(255, 255, 255, 0);
+      box-shadow: 0px 0px 10px rgba(148, 34, 34, 0.3);
+      width: 95%;
+      word-wrap: none;
+      word-break: none;
+    }
+    .reveal pre code {
+      background: #d8d8d8;
+    }
+    /* Code Focus */
+    .reveal .line {
+      display: block;
+    }
+    .reveal .line.focus {
+      background: #bebebe;
+      box-shadow:  5px 0 rgb(55, 136, 173) inset;
+      margin-left: -11px;
+      padding-left: 11px;
+      margin-right: -10px;
+    }
+
+
+    .reveal .row {
+      display: flex;
+    }
+
+    .reveal .column-half {
+      flex: 50%;
+      padding: 5px;
+    }
+
+    .reveal table tr th {
+      color: rgb(0, 0, 184);
+    }
+
+    .reveal table tr th,
+    .reveal table td.seperator {
+      border-bottom: 3pt solid;
+      border-color: #949494;
+    }
+
+    .reveal table tr th {
+      color: rgb(0, 0, 184);
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section data-markdown="files/cpp-meeting/Vortrag.md" data-separator="^\n---\n"
+        data-separator-vertical="^\r\n--\r\n" data-separator-notes="^Note:" data-charset="utf-8">
+      </section>
+    </div>
+  </div>
+
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      hash: false,
+      fragmentInURL: true,
+      center: true,
+      mouseWheel: false,
+      slideNumber: "c/t",
+      transition: 'fade', // none/fade/slide/convex/concave/zoom
+      width: 960,
+      heigh: 540,
+      margin: 0,
+      minScale: 0.001,
+      maxScale: 40,
+      pdfSeparateFragments: true,
+      hideInactiveMouse: true,
+      hideMouseTime: 1000,
+      // More info https://github.com/hakimel/reveal.js#dependencies
+      dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+        { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'plugin/highlight/vendor/highlight.js' },
+
+        // Code focus.
+        {
+          src: 'plugin/code-focus/reveal-code-focus.js',
+          async: true, callback: function () { RevealCodeFocus(); }
+        },
+
+        // Zoom in and out with Alt+click
+        { src: 'plugin/zoom-js/zoom.js', async: true },
+
+        // Speaker notes
+        { src: 'plugin/notes/notes.js', async: true },
+
+        // MathJax
+        { src: 'plugin/math/math.js', async: true }
+      ]
+    });
+  </script>
+
+</body>
+
+</html>
